@@ -10,8 +10,12 @@ public class NPC_Dialog : MonoBehaviour {
 
     public string[] dialogLines;
     public int currentLine;
+    private MovementPlayer thePlayer;
+
+    
 	// Use this for initialization
 	void Start () {
+        thePlayer = FindObjectOfType<MovementPlayer>();
 	
 	}
 	
@@ -27,6 +31,7 @@ public class NPC_Dialog : MonoBehaviour {
             DialogActive = false;
 
             currentLine = 0;
+            thePlayer.canMove = true;
         }
         dText.text = dialogLines[currentLine];
 
@@ -41,5 +46,6 @@ public class NPC_Dialog : MonoBehaviour {
     {
         DialogActive = true;
         dBox.SetActive(true);
+        thePlayer.canMove = false;
     }
 }

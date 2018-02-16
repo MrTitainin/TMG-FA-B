@@ -19,6 +19,10 @@ public class MovementPlayer : MonoBehaviour
     public List<KeyCode> leftButton;
     public List<KeyCode> rightButton;
     public List<KeyCode> dialogButton;
+
+    
+    public bool canMove;
+
     public string startPoint;
 
     // The last movement that we've made
@@ -46,6 +50,12 @@ public class MovementPlayer : MonoBehaviour
         // Rotate player to face mouse
         //Rotation();
         // Move the player's body
+        if (!canMove)
+        {
+
+            m_Rigidbody.velocity = Vector2.zero;
+            return;
+        }
         Movement();
     }
     // Will rotate the ship to face the mouse.
