@@ -70,6 +70,7 @@
     <Compile Include="Assets\Scripts\MovementPlayer.cs" />
     <Compile Include="Assets\Scripts\NPC_Dialog.cs" />
     <Compile Include="Assets\Scripts\PlayerStartPoint.cs" />
+    <Compile Include="Assets\Scripts\Questy.cs" />
     <Compile Include="Assets\Walka\WalkaStatystyki.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
