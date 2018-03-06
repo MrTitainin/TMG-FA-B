@@ -20,7 +20,7 @@ public class MovementPlayer : MonoBehaviour
     public List<KeyCode> rightButton;
     public List<KeyCode> dialogButton;
 
-    
+    public static bool[] lista_zadan;
     public bool canMove;
 
     public string startPoint;
