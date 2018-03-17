@@ -16,21 +16,23 @@ public class DialogAktywacja : MonoBehaviour {
 	void Update () {
 	
 	}
-    void OnTriggerStay2D(Collider2D other)
+   
+     void OnTriggerStay2D(Collider2D other)
     {
-        if(other.gameObject.name=="Edward_0")
-        {
-            if (Input.GetKeyUp(KeyCode.J))
+            if (other.gameObject.name == "Edward_0")
             {
-                //Npc.ShowBox(tekscik);
-                
-            if(!Npc.DialogActive)
+                if (Input.GetKeyUp(KeyCode.J))
                 {
-                    Npc.dialogLines = dialogLines;
-                    Npc.currentLine = 0;
-                    Npc.ShowDialog();
+                    //Npc.ShowBox(tekscik);
+
+                    if (!Npc.DialogActive)
+                    {
+                        Npc.dialogLines = dialogLines;
+                        Npc.currentLine = 0;
+                        Npc.ShowDialog();
+                    }
                 }
             }
         }
-    }
+   
 }

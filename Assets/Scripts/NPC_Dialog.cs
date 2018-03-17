@@ -21,7 +21,7 @@ public class NPC_Dialog : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	    if(DialogActive && Input.GetKeyDown(KeyCode.J)) {
+	    if(DialogActive && Input.GetMouseButtonDown(0)) {
             
             currentLine++;
         }
