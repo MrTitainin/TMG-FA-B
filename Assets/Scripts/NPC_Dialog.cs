@@ -5,8 +5,11 @@ using UnityEngine.UI;
 public class NPC_Dialog : MonoBehaviour {
 
     public GameObject dBox;
+    public GameObject Nazwa_quest;
+    public Text qText;
     public Text dText;
     public bool DialogActive;
+    public bool czy_ma_dac_quest;
 
     public string[] dialogLines;
     public int currentLine;
@@ -24,6 +27,10 @@ public class NPC_Dialog : MonoBehaviour {
 	    if(DialogActive && Input.GetMouseButtonDown(0)) {
             
             currentLine++;
+        }
+        if (czy_ma_dac_quest)
+        {
+
         }
         if(currentLine>= dialogLines.Length)
         {
@@ -47,5 +54,9 @@ public class NPC_Dialog : MonoBehaviour {
         DialogActive = true;
         dBox.SetActive(true);
         thePlayer.canMove = false;
+    }
+    public void QuestAktywator(Questy quest)
+    {
+        Nazwa_quest.SetActive(true);
     }
 }

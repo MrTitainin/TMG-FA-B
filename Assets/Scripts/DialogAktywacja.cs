@@ -5,6 +5,7 @@ public class DialogAktywacja : MonoBehaviour {
 
     public string tekscik;
     private NPC_Dialog Npc;
+    public bool isQuest;
     public string[] dialogLines;
 
 	// Use this for initialization
