@@ -10,6 +10,7 @@ public class NPC_Dialog : MonoBehaviour {
     public Text dText;
     public bool DialogActive;
     public bool czy_ma_dac_quest;
+    public int linia_questu;
 
     public string[] dialogLines;
     public int currentLine;
@@ -26,11 +27,22 @@ public class NPC_Dialog : MonoBehaviour {
 	void Update () {
 	    if(DialogActive && Input.GetMouseButtonDown(0)) {
             
-            currentLine++;
+            
+            if(currentLine!=linia_questu&&czy_ma_dac_quest)
+            {
+                currentLine++;
+            }
         }
-        if (czy_ma_dac_quest)
-        {
-
+        if(DialogActive && currentLine==linia_questu&&czy_ma_dac_quest)
+            {
+            if (Input.GetKeyDown(KeyCode.Y))
+            {
+                Nazwa_quest.SetActive(true);
+                currentLine++;
+            }else if (Input.GetKeyDown(KeyCode.N))
+            {
+                currentLine++;
+            }
         }
         if(currentLine>= dialogLines.Length)
         {

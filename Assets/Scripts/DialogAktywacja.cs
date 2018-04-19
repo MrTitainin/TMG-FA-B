@@ -6,6 +6,7 @@ public class DialogAktywacja : MonoBehaviour {
     public string tekscik;
     private NPC_Dialog Npc;
     public bool isQuest;
+    public int Quest_W_Ktorej_Linii;
     public string[] dialogLines;
 
 	// Use this for initialization
@@ -25,7 +26,10 @@ public class DialogAktywacja : MonoBehaviour {
                 if (Input.GetKeyUp(KeyCode.J))
                 {
                     //Npc.ShowBox(tekscik);
-
+                    if(isQuest)
+                {
+                    Npc.linia_questu = Quest_W_Ktorej_Linii;
+                }
                     if (!Npc.DialogActive)
                     {
                         Npc.dialogLines = dialogLines;
