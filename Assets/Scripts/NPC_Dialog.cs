@@ -25,25 +25,38 @@ public class NPC_Dialog : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	    if(DialogActive && Input.GetMouseButtonDown(0)) {
-            
-            
-            if(currentLine!=linia_questu&&czy_ma_dac_quest)
+        if (czy_ma_dac_quest)
+        {
+            if (DialogActive && Input.GetMouseButtonDown(0))
             {
-                currentLine++;
+
+
+                if (currentLine != linia_questu)
+                {
+                    currentLine++;
+                }
+            }
+            if (DialogActive && currentLine == linia_questu)
+            {
+                if (Input.GetKeyDown(KeyCode.Y))
+                {
+                    Nazwa_quest.SetActive(true);
+                    currentLine++;
+                }
+                else if (Input.GetKeyDown(KeyCode.N))
+                {
+                    currentLine++;
+                }
             }
         }
-        if(DialogActive && currentLine==linia_questu&&czy_ma_dac_quest)
+        else
+        {
+            if (DialogActive && Input.GetMouseButtonDown(0))
             {
-            if (Input.GetKeyDown(KeyCode.Y))
-            {
-                Nazwa_quest.SetActive(true);
-                currentLine++;
-            }else if (Input.GetKeyDown(KeyCode.N))
-            {
-                currentLine++;
+                    currentLine++;
             }
         }
+        
         if(currentLine>= dialogLines.Length)
         {
             dBox.SetActive(false);

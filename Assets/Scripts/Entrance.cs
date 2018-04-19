@@ -23,7 +23,7 @@ public class Entrance : MonoBehaviour
     {
         if (other.name == "Edward_0")
         {
-            if (Input.GetKeyDown(KeyCode.G))
+            if (Input.GetKeyDown(KeyCode.E))
            {
                 /* KtoryPoziom.IsExit = IsExit;
                  KtoryPoziom.KtoryLevel = Level;

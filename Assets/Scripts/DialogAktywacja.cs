@@ -23,11 +23,12 @@ public class DialogAktywacja : MonoBehaviour {
     {
             if (other.gameObject.name == "Edward_0")
             {
-                if (Input.GetKeyUp(KeyCode.J))
+                if (Input.GetKeyUp(KeyCode.E))
                 {
                     //Npc.ShowBox(tekscik);
                     if(isQuest)
                 {
+                    Npc.czy_ma_dac_quest = true;
                     Npc.linia_questu = Quest_W_Ktorej_Linii;
                 }
                     if (!Npc.DialogActive)
