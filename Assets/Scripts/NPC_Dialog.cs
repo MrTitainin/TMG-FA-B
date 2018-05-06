@@ -11,17 +11,26 @@ public class NPC_Dialog : MonoBehaviour {
     public bool DialogActive;
     public bool czy_ma_dac_quest;
     public int linia_questu;
-
+    public Quest zlecanyQuest;
     public string[] dialogLines;
     public int currentLine;
     private MovementPlayer thePlayer;
+    private static bool czy_istnieje;
 
     
 	// Use this for initialization
 	void Start () {
         thePlayer = FindObjectOfType<MovementPlayer>();
-	
-	}
+     /*   if (!czy_istnieje)
+        {
+            czy_istnieje = true;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }*/
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -41,6 +50,8 @@ public class NPC_Dialog : MonoBehaviour {
                 if (Input.GetKeyDown(KeyCode.Y))
                 {
                     Nazwa_quest.SetActive(true);
+                    zlecanyQuest.czy_quest_aktywny = true;
+                    qText.text = zlecanyQuest.nazwa_questa;
                     currentLine++;
                 }
                 else if (Input.GetKeyDown(KeyCode.N))
@@ -80,7 +91,7 @@ public class NPC_Dialog : MonoBehaviour {
         dBox.SetActive(true);
         thePlayer.canMove = false;
     }
-    public void QuestAktywator(Questy quest)
+    public void QuestAktywator(Quest quest)
     {
         Nazwa_quest.SetActive(true);
     }

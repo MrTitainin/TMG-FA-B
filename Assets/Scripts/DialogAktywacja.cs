@@ -8,9 +8,11 @@ public class DialogAktywacja : MonoBehaviour {
     public bool isQuest;
     public int Quest_W_Ktorej_Linii;
     public string[] dialogLines;
+    public int ile_questow;
+    public Quest[] questy;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         Npc = FindObjectOfType<NPC_Dialog>();
 	}
 	
@@ -34,6 +36,17 @@ public class DialogAktywacja : MonoBehaviour {
                     if (!Npc.DialogActive)
                     {
                         Npc.dialogLines = dialogLines;
+                    if (isQuest)
+                    {
+                        for (int i = 0; i < ile_questow; i++)
+                        {
+                            if (!questy[i].czy_quest_ukonczony)
+                            {
+                                Npc.zlecanyQuest = questy[i];
+                                break;
+                            }
+                        }
+                    }
                         Npc.currentLine = 0;
                         Npc.ShowDialog();
                     }

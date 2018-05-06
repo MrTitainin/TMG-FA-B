@@ -65,12 +65,14 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Camerafollow.cs" />
     <Compile Include="Assets\Scripts\DialogAktywacja.cs" />
+    <Compile Include="Assets\Scripts\DontDestroy.cs" />
     <Compile Include="Assets\Scripts\Entrance.cs" />
     <Compile Include="Assets\Scripts\GameController.cs" />
     <Compile Include="Assets\Scripts\MovementPlayer.cs" />
     <Compile Include="Assets\Scripts\NPC_Dialog.cs" />
     <Compile Include="Assets\Scripts\PlayerStartPoint.cs" />
-    <Compile Include="Assets\Scripts\Questy.cs" />
+    <Compile Include="Assets\Scripts\Quest.cs" />
+    <Compile Include="Assets\Scripts\QuestyLista.cs" />
     <Compile Include="Assets\Walka\WalkaStatystyki.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
