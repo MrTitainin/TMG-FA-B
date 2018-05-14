@@ -14,6 +14,10 @@ public class DialogActivator : MonoBehaviour {
 	public int questCount;
 	public List<Quest> quests;
 
+	public bool changeLocationAtDialogEnd;
+	public string targetLocation;
+	public string startPoint;
+
 	void Start () {
         npc = FindObjectOfType<DialogController>();
 		FindObjectOfType<GameController>().RegisterDialogEntity(this);
@@ -27,6 +31,9 @@ public class DialogActivator : MonoBehaviour {
 			npc.dialogLines = dialogLines;
 			npc.wherefrom = this;
 			npc.Run();
+			npc.changeLocationAtDialogEnd = changeLocationAtDialogEnd;
+			npc.targetLocation = targetLocation;
+			npc.targetStartPoint = startPoint;
 			if (isQuest) {
 				npc.shouldGiveQuest = true;
 				npc.questLine = questLine;

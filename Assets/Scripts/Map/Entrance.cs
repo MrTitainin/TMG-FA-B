@@ -19,7 +19,7 @@ public class Entrance : MonoBehaviour {
     
 	internal void Proceed() {
 		FindObjectOfType<GameController>().NextScene(LevelToGo);
-		thePlayer.startPoint = exitPoint;
+		FindObjectOfType<Player>().startPoint = exitPoint;
 	}
 }
 

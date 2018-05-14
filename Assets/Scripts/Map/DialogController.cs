@@ -23,6 +23,10 @@ public class DialogController : MonoBehaviour {
 	private Player thePlayer;
 	internal DialogActivator wherefrom;
 
+	public bool changeLocationAtDialogEnd;
+	public string targetLocation;
+	public string targetStartPoint;
+
 	void Start () {
 		
 	}
@@ -51,11 +55,18 @@ public class DialogController : MonoBehaviour {
 		}
 	}
 	public bool AcceptQuest() {
+		//te komentarze chyba coś psują
 		if (receiveInput && shouldGiveQuest && currentLine == questLine) {
 			//quest.SetActive(true);
 			givenQuest.active = true;
-			qText.text = givenQuest.questName;
+			//qText.text = givenQuest.questName;
 			currentLine++;
+			if (givenQuest.changeLocationOnAccept) {
+				changeLocationAtDialogEnd = true;
+				targetLocation = givenQuest.targetLocation;
+				targetStartPoint = givenQuest.targetStartLocation;
+				End();
+			}
 			return true;
 		}
 		else return false;
@@ -73,6 +84,9 @@ public class DialogController : MonoBehaviour {
 		FindObjectOfType<GameController>().EndCurrentDialog();
 		wherefrom.Disload();
 		currentLine = 0;
+		if (changeLocationAtDialogEnd) {
+			ChangeLocation(targetLocation, targetStartPoint);
+		}
 	}
     public void ShowBox(string dialog)
     {
@@ -96,5 +110,9 @@ public class DialogController : MonoBehaviour {
 	}
 	public void QuestAktivator(Quest q) {
 		quest.SetActive(true);
+	}
+	public void ChangeLocation(string location,string exitPoint) {
+		FindObjectOfType<GameController>().NextScene(location);
+		FindObjectOfType<Player>().startPoint = exitPoint;
 	}
 }

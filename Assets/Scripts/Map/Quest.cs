@@ -8,6 +8,10 @@ public class Quest : MonoBehaviour {
     public Quest required;
     private static bool questExists;
 
+	public bool changeLocationOnAccept;
+	public string targetLocation;
+	public string targetStartLocation;
+
 	void Start () {
         if (!questExists) {
             questExists = true;
