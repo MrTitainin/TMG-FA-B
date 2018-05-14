@@ -13,6 +13,8 @@ public class Player : MonoBehaviour {
 	public List<KeyCode> rightButton;
 	public List<KeyCode> dialogButton;
 	public List<KeyCode> doorButton;
+	public List<KeyCode> acceptQuestButton;
+	public List<KeyCode> rejectQuestButton;
 
 	//constant multipliers (static)
 	public float playerSpeed = 2.0f;
@@ -71,9 +73,18 @@ public class Player : MonoBehaviour {
 		}
 	}
 	void CheckIfInteraction() {
-		if (TryInteract(dialogButton,ContinueDialog)) return;
+		if (CheckLeftClick(ContinueDialog)) return;
+		if (TryInteract(dialogButton, ContinueDialog)) return;
+		if (TryInteract(acceptQuestButton, AcceptQuest)) return;
+		if (TryInteract(rejectQuestButton, RejectQuest)) return;
+		if (CheckLeftClick(OpenDialog)) return;
+		if (TryInteract(dialogButton, OpenDialog)) return;
+		if (mapController.currentDialog != null) {
+			interrupt = true;
+			return;
+		}
+
 		if (TryInteract(doorButton,UseDoor)) return;
-		if (TryInteract(dialogButton,OpenDialog)) return;
 	}
 
 	//utilities
@@ -94,6 +105,13 @@ public class Player : MonoBehaviour {
 			}
 		}
 		if (pressed) {
+			if (toExec()) return true;
+			else return false;
+		}
+		else return false;
+	}
+	bool CheckLeftClick(Interaction toExec) {
+		if (Input.GetMouseButtonDown(0)) {
 			if (toExec()) return true;
 			else return false;
 		}
@@ -137,6 +155,18 @@ public class Player : MonoBehaviour {
 		else {
 			mapController.currentDialog.Proceed();
 			return true;
+		}
+	}
+	bool AcceptQuest() {
+		if (mapController.currentDialog == null) return false;
+		else {
+			return mapController.currentDialog.AcceptQuest();
+		}
+	}
+	bool RejectQuest() {
+		if (mapController.currentDialog == null) return false;
+		else {
+			return mapController.currentDialog.RejectQuest();
 		}
 	}
 }

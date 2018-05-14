@@ -1,13 +1,18 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
 
 public class DialogActivator : MonoBehaviour {
 
     public string tekscik;
     private DialogController npc;
-    public string[] dialogLines;
+	public string[] dialogLines;
 	public float activatorDistance;
 	public bool oneTimeOnly;
+
+	public bool isQuest;
+	public int questLine;
+	public int questCount;
+	public List<Quest> quests;
 
 	void Start () {
         npc = FindObjectOfType<DialogController>();
@@ -22,6 +27,17 @@ public class DialogActivator : MonoBehaviour {
 			npc.dialogLines = dialogLines;
 			npc.wherefrom = this;
 			npc.Run();
+			if (isQuest) {
+				npc.shouldGiveQuest = true;
+				npc.questLine = questLine;
+				foreach(Quest q in quests) {
+					if (!q.finished) {
+						print(q.questName);
+						npc.givenQuest = q;
+						break;
+					}
+				}
+			}
 			FindObjectOfType<GameController>().NotifyDialog(npc);
 		}
 	}

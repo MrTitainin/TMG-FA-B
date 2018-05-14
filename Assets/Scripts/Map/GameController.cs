@@ -12,6 +12,7 @@ public class GameController : MonoBehaviour {
 	public List<Entrance> doors;
 	public List<DialogActivator> dialogEntities;
 	public DialogController currentDialog;
+	public List<bool> questList;
 
 	//debug
 	//public string id;

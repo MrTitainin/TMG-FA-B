@@ -4,14 +4,23 @@ using UnityEngine.UI;
 
 public class DialogController : MonoBehaviour {
 	private float dialogDelay = 0.25f;
+
 	public GameObject dBox;
     public Text dText;
+	public Text qText;
+
     public bool dialogActive = false;
 	public bool receiveInput = false;
 
     public string[] dialogLines;
     public int currentLine;
-	
+
+	public GameObject quest;
+	public bool shouldGiveQuest;
+	public int questLine=-1;
+	public Quest givenQuest;
+
+	private Player thePlayer;
 	internal DialogActivator wherefrom;
 
 	void Start () {
@@ -35,9 +44,28 @@ public class DialogController : MonoBehaviour {
 	}
 	public void Proceed() {
 		if (receiveInput) {
-			currentLine++;
-			Delay();
+			if (!shouldGiveQuest || currentLine != questLine) {
+				currentLine++;
+				Delay();
+			}
 		}
+	}
+	public bool AcceptQuest() {
+		if (receiveInput && shouldGiveQuest && currentLine == questLine) {
+			//quest.SetActive(true);
+			givenQuest.active = true;
+			qText.text = givenQuest.questName;
+			currentLine++;
+			return true;
+		}
+		else return false;
+	}
+	public bool RejectQuest() {
+		if (receiveInput && shouldGiveQuest && currentLine == questLine) {
+			currentLine++;
+			return true;
+		}
+		else return false;
 	}
 	public void End() {
 		dBox.SetActive(false);
@@ -65,5 +93,8 @@ public class DialogController : MonoBehaviour {
 	IEnumerator CreateDelay(float time) {
 		yield return new WaitForSeconds(time);
 		receiveInput = true;
+	}
+	public void QuestAktivator(Quest q) {
+		quest.SetActive(true);
 	}
 }
