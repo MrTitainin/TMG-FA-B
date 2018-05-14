@@ -1,4 +1,10 @@
 sceneSetups:
-- path: Assets/Level/Test 1.unity
+- path: Assets/Level/MainMap.unity
   isLoaded: 1
   isActive: 1
+- path: Assets/Level/HouseRoyMustang.unity
+  isLoaded: 0
+  isActive: 0
+- path: Assets/Level/HouseAlexArmstrong.unity
+  isLoaded: 0
+  isActive: 0
