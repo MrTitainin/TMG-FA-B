@@ -62,10 +62,8 @@ public class DialogController : MonoBehaviour {
 			//qText.text = givenQuest.questName;
 			currentLine++;
 			if (givenQuest.changeLocationOnAccept) {
-				changeLocationAtDialogEnd = true;
-				targetLocation = givenQuest.targetLocation;
-				targetStartPoint = givenQuest.targetStartLocation;
 				End();
+				ChangeLocation(givenQuest.targetLocation, givenQuest.targetStartLocation);
 			}
 			return true;
 		}
