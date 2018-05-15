@@ -243,7 +243,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\Fight\WalkaStatystyki.cs" />
+    <Compile Include="Assets\Scripts\Fight\FightController.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\Map\CameraFollow.cs" />
     <Compile Include="Assets\Scripts\Map\DialogActivator.cs" />
