@@ -48,7 +48,7 @@ public class DialogActivator : MonoBehaviour {
 			FindObjectOfType<GameController>().NotifyDialog(npc);
 		}
 	}
-	internal void Disload() {
+	internal void DisloadDialog() {
 		if(oneTimeOnly) FindObjectOfType<GameController>().UnregisterDialogEntity(this);
 	}
 }

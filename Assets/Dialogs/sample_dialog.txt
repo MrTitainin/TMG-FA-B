@@ -1,0 +1,67 @@
+[dialog]
+	id=L1A_TestDialog1
+	[say]
+		src=RoyMustang
+		text="We would better find some discreet place to talk."
+	[/say]
+	[say]
+		src=Edward
+		text="Of course."
+	[/say]
+	[quest]
+		id=Test_Quest
+		accept=yes
+		break=no
+	[/quest]
+	[choice]
+		src=RoyMustang
+		text="Can you go here?"
+		[option]
+			text="I have only a while."
+			dest=L1A_TestDialog1_B1
+			return=yes
+		[/option]
+		[option]
+			text="Stupid question, however I can."
+			dest=L1A_TestDialog1_B2
+			return=no
+		[/option]
+	[/choice]
+	[delay]
+		time=4000
+	[/delay]
+	[say]
+		src=RoyMustang
+		text="Are you still here?"
+	[/say]
+	[say]
+		src=Edward
+		text="Sorry."
+	[/say]
+	[teleport]
+		level=MainMap
+		start=House2Out
+	[/teleport]
+[/dialog]
+[dialog]
+	id=L1A_TestDialog1_B1
+	[say]
+		src=Edward
+		text="So, what are we going to do?"
+	[/say]
+	[say]
+		src=RoyMustang
+		text="After all, I forgot. You are dismissed, at least for now. Go do your things."
+	[/say]
+[/dialog]
+[dialog]
+	id=L1A_TestDialog1_B2
+	[say]
+		src=RoyMustang
+		text="I am going to give you a mission. Please go somewhere else while I will be preparing all the necessary papers. I hate paperwork."
+	[/say]
+	[teleport]
+		level=House1
+		start=House1In
+	[/teleport]
+[/dialog]

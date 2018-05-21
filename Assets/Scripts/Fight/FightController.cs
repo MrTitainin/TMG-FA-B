@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
 
 public class FightController : MonoBehaviour {
 	public enum State {
@@ -12,15 +12,17 @@ public class FightController : MonoBehaviour {
 
 	private State currentState;
 
+	public List<Unit> units;
+	public List<BattleObject> objects;
+
+
 	void Start() {
 		currentState = State.START;
 	}
 
 	void Update() {
-		Debug.Log(currentState);
 		switch (currentState) {
 			case (State.START):
-				//różne rzeczy na start
 				break;
 			case (State.PLAYERCHOICE):
 				break;
@@ -32,25 +34,42 @@ public class FightController : MonoBehaviour {
 				break;
 		}
 	}
+	
+	public void RegisterObject(BattleObject b) {
+		objects.Add(b);
+	}
 
-	void OnGUI() {
-		if (GUILayout.Button("NEXT STATE")) {
-			if (currentState == State.START) {
-				currentState = State.PLAYERCHOICE;
-			}
-			else if (currentState == State.PLAYERCHOICE) {
-				currentState = State.ENEMYCHOICE;
-			}
-			else if (currentState == State.ENEMYCHOICE) {
-				currentState = State.LOSE;
-			}
-			else if (currentState == State.LOSE) {
-				currentState = State.WIN;
-			}
-			else if (currentState == State.WIN) {
-				currentState = State.START;
-			}
+	public void UnregisterObject(BattleObject b) {
+		objects.Remove(b);
+	}
 
-		}
+	public void RegisterUnit(Unit b) {
+		units.Add(b);
+	}
+	public void UnregisterUnit(Unit b) {
+		units.Remove(b);
 	}
 }
+
+//---DUMP---
+/*
+void OnGUI() {
+	if (GUILayout.Button("NEXT STATE")) {
+		if (currentState == State.START) {
+			currentState = State.PLAYERCHOICE;
+		}
+		else if (currentState == State.PLAYERCHOICE) {
+			currentState = State.ENEMYCHOICE;
+		}
+		else if (currentState == State.ENEMYCHOICE) {
+			currentState = State.LOSE;
+		}
+		else if (currentState == State.LOSE) {
+			currentState = State.WIN;
+		}
+		else if (currentState == State.WIN) {
+			currentState = State.START;
+		}
+
+	}
+}*/

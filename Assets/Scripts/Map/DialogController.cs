@@ -80,7 +80,7 @@ public class DialogController : MonoBehaviour {
 		dBox.SetActive(false);
 		dialogActive = false;
 		FindObjectOfType<GameController>().EndCurrentDialog();
-		wherefrom.Disload();
+		wherefrom.DisloadDialog();
 		currentLine = 0;
 		if (changeLocationAtDialogEnd) {
 			ChangeLocation(targetLocation, targetStartPoint);
