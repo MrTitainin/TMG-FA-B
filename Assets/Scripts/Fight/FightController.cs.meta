@@ -1,10 +1,10 @@
 fileFormatVersion: 2
 guid: 54937d41bb90f9440950e5fd6b77cbef
-timeCreated: 1481658948
-licenseType: Free
 MonoImporter:
+  externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - mapFile: {fileID: 4900000, guid: e899207db398b974b9f43cd15fc76e55, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

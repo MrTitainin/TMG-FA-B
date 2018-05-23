@@ -1,0 +1,5 @@
+stone,ground,ground,cactus,ground;
+cactus,ground,stone,stone,ground;
+bush,ground,ground,ground,ground;
+stone,ground,bush,ground,stone;
+ground,ground,cactus,ground,ground;

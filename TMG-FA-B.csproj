@@ -300,14 +300,20 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Fight\Ability.cs" />
     <Compile Include="Assets\Scripts\Fight\Ally.cs" />
+    <Compile Include="Assets\Scripts\Fight\Barrier.cs" />
     <Compile Include="Assets\Scripts\Fight\BattleObject.cs" />
-    <Compile Include="Assets\Scripts\Fight\EncounterInit.cs" />
     <Compile Include="Assets\Scripts\Fight\Enemy.cs" />
     <Compile Include="Assets\Scripts\Fight\FightController.cs" />
+    <Compile Include="Assets\Scripts\Fight\GatheringOption.cs" />
     <Compile Include="Assets\Scripts\Fight\IDamagable.cs" />
     <Compile Include="Assets\Scripts\Fight\IEntity.cs" />
+    <Compile Include="Assets\Scripts\Fight\Item.cs" />
     <Compile Include="Assets\Scripts\Fight\MapGenerator.cs" />
+    <Compile Include="Assets\Scripts\Fight\Obstacle.cs" />
+    <Compile Include="Assets\Scripts\Fight\Resource.cs" />
+    <Compile Include="Assets\Scripts\Fight\Tile.cs" />
     <Compile Include="Assets\Scripts\Fight\Unit.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\Map\CameraFollow.cs" />
@@ -323,6 +329,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Dialogs\sample_dialog.txt" />
+    <None Include="Assets\Encounters\test_encounter_map.txt" />
     <None Include="C:\Users\Jarom\AppData\Local\Unity\cache\packages\packages.unity.com\com.unity.package-manager-ui@1.8.8\Editor\Resources\Styles\Main_Dark.uss" />
     <None Include="C:\Users\Jarom\AppData\Local\Unity\cache\packages\packages.unity.com\com.unity.package-manager-ui@1.8.8\Editor\Resources\Styles\Main_Light.uss" />
     <None Include="C:\Users\Jarom\AppData\Local\Unity\cache\packages\packages.unity.com\com.unity.package-manager-ui@1.8.8\Editor\Resources\Templates\Alert.uxml" />
