@@ -35,6 +35,7 @@ public class Player : MonoBehaviour {
 		m_Rigidbody = GetComponent<Rigidbody2D>() as Rigidbody2D;
 		m_Collider = GetComponent<Collider2D>();
 		mapController = FindObjectOfType<GameController>();
+        //checks, if player exists. If yes, destroys "the new one" 
 		if (!playerExists) {
 			playerExists = true;
 			DontDestroyOnLoad(transform.gameObject);

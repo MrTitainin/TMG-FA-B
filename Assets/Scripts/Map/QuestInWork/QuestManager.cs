@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class QuestManager : MonoBehaviour {
-    public Quest[] quests;
+    public QuestObject[] quests;
     public bool[] questsCompleted;
 	// Use this for initialization
 	void Start () {
@@ -14,4 +14,9 @@ public class QuestManager : MonoBehaviour {
 	void Update () {
 		
 	}
+
+    public void showQuest()
+    {
+
+    }
 }

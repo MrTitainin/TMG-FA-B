@@ -310,7 +310,7 @@ Prefab:
     - target: {fileID: 114000010084956728, guid: 31c36db7a05365c43b61362f4b4c8ed0,
         type: 2}
       propertyPath: changeLocationAtDialogEnd
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114000010084956728, guid: 31c36db7a05365c43b61362f4b4c8ed0,
         type: 2}
@@ -913,7 +913,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 820573702}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93cce227d98ae294488b844a6b47c5f6, type: 3}
+  m_Script: {fileID: 11500000, guid: 55837aea69a59714fbd67c75f95b483d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   questName: 
@@ -923,6 +923,8 @@ MonoBehaviour:
   changeLocationOnAccept: 0
   targetLocation: 
   targetStartLocation: 
+  questNumber: 2
+  theQM: {fileID: 1738413072}
 --- !u!224 &825001752 stripped
 RectTransform:
   m_PrefabParentObject: {fileID: 224000012452315420, guid: e6b29b046e1037e45b63d5b6d793e264,
@@ -1305,7 +1307,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1591498683}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93cce227d98ae294488b844a6b47c5f6, type: 3}
+  m_Script: {fileID: 11500000, guid: 55837aea69a59714fbd67c75f95b483d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   questName: 
@@ -1315,6 +1317,8 @@ MonoBehaviour:
   changeLocationOnAccept: 0
   targetLocation: 
   targetStartLocation: 
+  questNumber: 1
+  theQM: {fileID: 1738413072}
 --- !u!1 &1593563504
 GameObject:
   m_ObjectHideFlags: 0
@@ -1357,7 +1361,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1593563504}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93cce227d98ae294488b844a6b47c5f6, type: 3}
+  m_Script: {fileID: 11500000, guid: 55837aea69a59714fbd67c75f95b483d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   questName: 
@@ -1367,6 +1371,8 @@ MonoBehaviour:
   changeLocationOnAccept: 0
   targetLocation: 
   targetStartLocation: 
+  questNumber: 0
+  theQM: {fileID: 1738413072}
 --- !u!1001 &1599761871
 Prefab:
   m_ObjectHideFlags: 0
@@ -1467,9 +1473,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   quests:
-  - {fileID: 1593563506}
-  - {fileID: 1591498685}
-  - {fileID: 820573704}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   questsCompleted: 
 --- !u!1001 &1837338895
 Prefab:

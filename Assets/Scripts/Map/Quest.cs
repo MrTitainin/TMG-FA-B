@@ -25,4 +25,6 @@ public class Quest : MonoBehaviour {
 	void Update () {
 	
 	}
+
+    
 }
