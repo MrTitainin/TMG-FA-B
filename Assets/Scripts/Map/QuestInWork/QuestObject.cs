@@ -1,13 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class QuestObject : MonoBehaviour
 {
     public string questName;
+
     public bool active;
-    public bool finished;
-    public QuestObject required;
-    private static bool questExists;
+    //public bool finished;
+    public List<string> requiredID=new List<string>();
+    
 
     public bool changeLocationOnAccept;
     public string targetLocation;
@@ -20,15 +22,7 @@ public class QuestObject : MonoBehaviour
 
     void Start()
     {
-        if (!questExists)
-        {
-            questExists = true;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+       
     }
 
     void Update()
@@ -47,3 +41,19 @@ public class QuestObject : MonoBehaviour
         gameObject.SetActive(false);
     }
 }
+//---DUMP---
+/* 
+ * private static bool questExists;
+ * // if (!questExists)
+        {
+            questExists = true;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+    //    }
+ * 
+ * 
+ * 
+ * */

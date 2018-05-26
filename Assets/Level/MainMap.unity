@@ -918,8 +918,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questName: 
   active: 0
-  finished: 0
-  required: {fileID: 0}
+  requiredID:
+  - 
+  - 
   changeLocationOnAccept: 0
   targetLocation: 
   targetStartLocation: 
@@ -1312,8 +1313,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questName: 
   active: 0
-  finished: 0
-  required: {fileID: 0}
+  requiredID: []
   changeLocationOnAccept: 0
   targetLocation: 
   targetStartLocation: 
@@ -1366,8 +1366,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questName: 
   active: 0
-  finished: 0
-  required: {fileID: 0}
+  requiredID: []
   changeLocationOnAccept: 0
   targetLocation: 
   targetStartLocation: 

@@ -60,6 +60,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Fight\Ability.cs" />
+    <Compile Include="Assets\Scripts\Fight\AbilityCircle.cs" />
     <Compile Include="Assets\Scripts\Fight\Ally.cs" />
     <Compile Include="Assets\Scripts\Fight\Barrier.cs" />
     <Compile Include="Assets\Scripts\Fight\BattleObject.cs" />
@@ -78,6 +79,7 @@
     <Compile Include="Assets\Scripts\Map\CameraFollow.cs" />
     <Compile Include="Assets\Scripts\Map\DialogActivator.cs" />
     <Compile Include="Assets\Scripts\Map\DialogController.cs" />
+    <Compile Include="Assets\Scripts\Map\DialogLoader.cs" />
     <Compile Include="Assets\Scripts\Map\DontDestroy.cs" />
     <Compile Include="Assets\Scripts\Map\Entrance.cs" />
     <Compile Include="Assets\Scripts\Map\GameController.cs" />
@@ -87,7 +89,8 @@
     <Compile Include="Assets\Scripts\Map\QuestInWork\QuestManager.cs" />
     <Compile Include="Assets\Scripts\Map\QuestInWork\QuestObject.cs" />
     <Compile Include="Assets\Scripts\Map\QuestyLista.cs" />
-    <None Include="Assets\Dialogs\sample_dialog.txt" />
+    <None Include="Assets\Dialogs\sample_dialog.xml" />
+    <None Include="Assets\Dialogs\simple_dialog.xml" />
     <None Include="Assets\Encounters\test_encounter_map.txt" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>C:/Users/Antek/Documents/GitHub/TMG-FA-BDzial/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
