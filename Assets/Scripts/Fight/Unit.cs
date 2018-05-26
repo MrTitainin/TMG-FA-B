@@ -5,7 +5,7 @@ using UnityEngine;
 public class Unit : MonoBehaviour,IDamagable {
 	List<Resource> resources;
 	List<Item> items;
-	List<Ability> abilities;
+	internal List<Ability> abilities;
 	FightController controller;
 	internal Vector2 coordinates;
 	int hitpoints;

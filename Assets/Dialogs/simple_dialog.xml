@@ -1,0 +1,18 @@
+<dialog>
+	id=SimpleDialog1
+	<say>
+		src=RoyMustang
+		text="Me be awesome"
+	</say>
+	<say>
+		src=RoyMustang
+		text="Me be pretty"
+	</say>
+</dialog>
+<dialog>
+	id=SimpleDialog2
+	<say>
+		src=RoyMustang
+		text="Me expressing thoughts oddly"
+	</say>
+</dialog>

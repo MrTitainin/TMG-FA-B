@@ -1,0 +1,74 @@
+<dialog>
+	id=L1A_TestDialog1
+	<say>
+		src=RoyMustang
+		text="We would better find some discreet place to talk."
+	</say>
+	<say>
+		src=Edward
+		text="Of course."
+	</say>
+	<quest>
+		id=Test_Quest
+		text="I want you to do something for me."
+		rejectable=yes
+		accept_text="OK"
+		decline_text="I refuse. Find someone else."
+		then=break
+	</quest>
+	<say>
+		src=RoyMustang
+		text="Can you go here?"
+	</say>
+	<choice>
+		src=Edward
+		header="Roy Mustang asks, if you can go to where he points."
+		<option>
+			text="I have only a while."
+			dest=L1A_TestDialog1_B1
+			return=yes
+		</option>
+		<option>
+			text="Stupid question, however I can."
+			dest=L1A_TestDialog1_B2
+			return=no
+		</option>
+	</choice>
+	<delay>
+		time=4000
+	</delay>
+	<say>
+		src=RoyMustang
+		text="Are you still here?"
+	</say>
+	<say>
+		src=Edward
+		text="Sorry."
+	</say>
+	<teleport>
+		level=MainMap
+		start=House2Out
+	</teleport>
+</dialog>
+<dialog>
+	id=L1A_TestDialog1_B1
+	<say>
+		src=Edward
+		text="So, what are we going to do?"
+	</say>
+	<say>
+		src=RoyMustang
+		text="After all, I forgot. You are dismissed, at least for now. Go do your things."
+	</say>
+</dialog>
+<dialog>
+	id=L1A_TestDialog1_B2
+	<say>
+		src=RoyMustang
+		text="I am going to give you a mission. Please go somewhere else while I will be preparing all the necessary papers. I hate paperwork."
+	</say>
+	<teleport>
+		level=House1
+		start=House1In
+	</teleport>
+</dialog>

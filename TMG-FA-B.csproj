@@ -301,6 +301,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Fight\Ability.cs" />
+    <Compile Include="Assets\Scripts\Fight\AbilityCircle.cs" />
     <Compile Include="Assets\Scripts\Fight\Ally.cs" />
     <Compile Include="Assets\Scripts\Fight\Barrier.cs" />
     <Compile Include="Assets\Scripts\Fight\BattleObject.cs" />
@@ -319,6 +320,7 @@
     <Compile Include="Assets\Scripts\Map\CameraFollow.cs" />
     <Compile Include="Assets\Scripts\Map\DialogActivator.cs" />
     <Compile Include="Assets\Scripts\Map\DialogController.cs" />
+    <Compile Include="Assets\Scripts\Map\DialogLoader.cs" />
     <Compile Include="Assets\Scripts\Map\DontDestroy.cs" />
     <Compile Include="Assets\Scripts\Map\Entrance.cs" />
     <Compile Include="Assets\Scripts\Map\GameController.cs" />
@@ -328,7 +330,8 @@
     <Compile Include="Assets\Scripts\Map\QuestyLista.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Dialogs\sample_dialog.txt" />
+    <None Include="Assets\Dialogs\sample_dialog.xml" />
+    <None Include="Assets\Dialogs\simple_dialog.xml" />
     <None Include="Assets\Encounters\test_encounter_map.txt" />
     <None Include="C:\Users\Jarom\AppData\Local\Unity\cache\packages\packages.unity.com\com.unity.package-manager-ui@1.8.8\Editor\Resources\Styles\Main_Dark.uss" />
     <None Include="C:\Users\Jarom\AppData\Local\Unity\cache\packages\packages.unity.com\com.unity.package-manager-ui@1.8.8\Editor\Resources\Styles\Main_Light.uss" />

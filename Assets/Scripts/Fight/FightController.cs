@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 
 public class FightController : MonoBehaviour {
-	private string[] ROW_SEPARATOR = { ";" };
-	private string[] TILE_SEPARATOR = { "," };
+	private readonly string[] ROW_SEPARATOR = { ";" };
+	private readonly string[] TILE_SEPARATOR = { "," };
 
 	public enum TurnState {
 		START,
@@ -13,8 +13,8 @@ public class FightController : MonoBehaviour {
 		WIN
 	}
 	public enum ChoiceState {
-		NONE,
 		UNIT,
+		ACTION,
 		//CATEGORY,
 		ABILITY,
 		TARGET,
@@ -64,7 +64,7 @@ public class FightController : MonoBehaviour {
 	void CheckInteraction() {
 		if (Input.GetMouseButtonDown(1)) {
 			switch (state) {
-				case ChoiceState.NONE:
+				case ChoiceState.UNIT:
 					foreach(Unit u in units) {
 						if (u.ally) if (u.GetComponent<Collider2D>().bounds.Contains(Input.mousePosition)) {
 								selectedUnit = u;
@@ -73,43 +73,67 @@ public class FightController : MonoBehaviour {
 						}
 					}
 					break;
-				case ChoiceState.UNIT:
+				case ChoiceState.ACTION:
+					bool found = false;
 					foreach (Unit u in units) {
 						if (u.ally) if (u.GetComponent<Collider2D>().bounds.Contains(Input.mousePosition)) {
+								found = true;
 								selectedUnit = u;
 								break;
 							}
 					}
+					if (found) OpenAbilities();
+					else CancelState();
 					break;
 				case ChoiceState.ABILITY:
 				case ChoiceState.TARGET:
 				case ChoiceState.ADDITIONAL:
-
+					CancelState();
 					break;
 			}
 		}
 		else if (Input.GetMouseButtonDown(0)) {
 			switch (state) {
-				case ChoiceState.NONE:
-					break;
 				case ChoiceState.UNIT:
+					foreach (Unit u in units) {
+						if (u.ally) if (u.GetComponent<Collider2D>().bounds.Contains(Input.mousePosition)) {
+								selectedUnit = u;
+								UnitSelected();
+								break;
+							}
+					}
+					break;
+				case ChoiceState.ACTION:
+					//tile
 					break;
 				case ChoiceState.ABILITY:
+					//separate event in AbilityCircle
 					break;
 				case ChoiceState.TARGET:
+					//tile
 					break;
 				case ChoiceState.ADDITIONAL:
+					//there will be separate event
 					break;
 			}
 		}
 	}
 
-	void OpenAbilities() {
+	void UnitSelected() {
+		state = ChoiceState.ACTION;
+	}
 
+	public void AbilitySelected() {
+		state=ChoiceState.TARGET;
+	}
+
+	void OpenAbilities() {
+		state = ChoiceState.ABILITY;
+		int parts = selectedUnit.abilities.Count;
 	}
 
 	void CancelState() {
-		state = ChoiceState.NONE;
+		state = ChoiceState.UNIT;
 		selectedUnit.selectedAbility = null;
 		selectedUnit = null;
 		target = new Vector2();
