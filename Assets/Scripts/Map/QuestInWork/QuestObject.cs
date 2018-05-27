@@ -1,13 +1,22 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-
-public class QuestObject : MonoBehaviour
+//
+//
+//              Jak robi sie obiekty wirtualne?
+//
+//
+public class QuestObject
 {
     public string questName;
 
-    public bool active;
-    //public bool finished;
+    enum Statuses
+    {
+        NotTaken = 0,
+        Active,
+        Finished
+    };
+    Statuses statusNow = Statuses.NotTaken;
     public List<string> requiredID=new List<string>();
     
 
@@ -16,7 +25,7 @@ public class QuestObject : MonoBehaviour
     public string targetStartLocation;
 
     //
-    public int questNumber;
+    //public int questNumber;
 
     public QuestManager theQM;
 
@@ -37,8 +46,9 @@ public class QuestObject : MonoBehaviour
 
     public void EndQuest()
     {
-        theQM.questsCompleted[questNumber] = true;
-        gameObject.SetActive(false);
+        // theQM.questsCompleted[questNumber] = true;
+        statusNow = Statuses.Finished;
+        //gameObject.SetActive(false);
     }
 }
 //---DUMP---

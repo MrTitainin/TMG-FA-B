@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class QuestManager : MonoBehaviour {
     public QuestObject[] quests;
-    public bool[] questsCompleted;
+   // public bool[] questsCompleted;
     private static bool QuestManagerExists;
 	// Use this for initialization
 	void Start ()
@@ -19,7 +19,7 @@ public class QuestManager : MonoBehaviour {
         {
             Destroy(gameObject);
         }
-        questsCompleted = new bool[quests.Length];
+       // questsCompleted = new bool[quests.Length];
     }
 
         // Update is called once per frame
