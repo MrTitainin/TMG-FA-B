@@ -4,14 +4,26 @@ using UnityEngine;
 
 public class QuestManager : MonoBehaviour {
     public QuestObject[] quests;
-    public bool[] questsCompleted;
+   // public bool[] questsCompleted;
+    private static bool QuestManagerExists;
 	// Use this for initialization
-	void Start () {
-        questsCompleted = new bool[quests.Length];
-	}
-	
-	// Update is called once per frame
-	void Update () {
+	void Start ()
+    {
+        
+        if (!QuestManagerExists)
+        {
+            QuestManagerExists = true;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+       // questsCompleted = new bool[quests.Length];
+    }
+
+        // Update is called once per frame
+        void Update () {
 		
 	}
 
