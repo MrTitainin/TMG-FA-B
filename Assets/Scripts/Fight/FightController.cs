@@ -1,9 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using System;
 
 public class FightController : MonoBehaviour {
 	private readonly string[] ROW_SEPARATOR = { ";" };
 	private readonly string[] TILE_SEPARATOR = { "," };
+	public bool useHexagonalCirclesLayout=true;
+	public AbilityCircle abilityCirclePrefab;
 
 	public enum TurnState {
 		START,
@@ -32,6 +35,7 @@ public class FightController : MonoBehaviour {
 	public List<Unit> units;
 	public List<BattleObject> objects;
 	public List<Tile> tileset;
+	public List<AbilityCircle> circles;
 
 	//map
 	Tile[,] map;
@@ -40,7 +44,7 @@ public class FightController : MonoBehaviour {
 
 	void Start() {
 		ReadMap();
-		phase = TurnState.START;
+		phase = TurnState.PLAYER;
 	}
 
 	//routine
@@ -62,14 +66,24 @@ public class FightController : MonoBehaviour {
 	}
 	
 	void CheckInteraction() {
+		Vector3 clickpos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+		clickpos.z = 0.0f;
 		if (Input.GetMouseButtonDown(1)) {
 			switch (state) {
 				case ChoiceState.UNIT:
-					foreach(Unit u in units) {
-						if (u.ally) if (u.GetComponent<Collider2D>().bounds.Contains(Input.mousePosition)) {
+					Debug.Log("interaction");
+					foreach (Unit u in units) {
+						if (u.ally) {
+							Debug.Log("found ally");
+							Debug.Log(u.GetComponent<Collider2D>().bounds.min);
+							Debug.Log(u.GetComponent<Collider2D>().bounds.max);
+							Debug.Log(Camera.main.ScreenToWorldPoint(Input.mousePosition));
+							if (u.GetComponent<Collider2D>().bounds.Contains(clickpos)) {
+								Debug.Log("ally in range");
 								selectedUnit = u;
 								OpenAbilities();
 								break;
+							}
 						}
 					}
 					break;
@@ -77,10 +91,10 @@ public class FightController : MonoBehaviour {
 					bool found = false;
 					foreach (Unit u in units) {
 						if (u.ally) if (u.GetComponent<Collider2D>().bounds.Contains(Input.mousePosition)) {
-								found = true;
-								selectedUnit = u;
-								break;
-							}
+							found = true;
+							selectedUnit = u;
+							break;
+						}
 					}
 					if (found) OpenAbilities();
 					else CancelState();
@@ -128,8 +142,60 @@ public class FightController : MonoBehaviour {
 	}
 
 	void OpenAbilities() {
+		Debug.Log("abilities");
+		Resources.Load("");
 		state = ChoiceState.ABILITY;
 		int parts = selectedUnit.abilities.Count;
+		Vector2 cpos = selectedUnit.coordinates;
+		double currentAngle = Math.PI / 2.0;
+		if (useHexagonalCirclesLayout) {
+			if (parts <= 6) {
+				double angleDifference = (2.0 * Math.PI) / parts;
+				for (int ii = 0; ii < parts; ii++) {
+					AbilityCircle c = Instantiate(abilityCirclePrefab, new Vector3((float)Math.Cos(currentAngle)+cpos.x, (float)Math.Sin(currentAngle)+cpos.y), Quaternion.identity);
+					circles.Add(c);
+					c.Assign(selectedUnit, selectedUnit.abilities[ii]);
+					currentAngle -= angleDifference;
+				}
+			}
+			else {
+				double angleDifference = Math.PI / 3.0;
+				int sn = 0;
+				int seqTreshold = 0;
+				int lineTreshold = 0;
+				Vector3 lineStartpoint = new Vector3(0f,0f,0f);
+				Vector3 lineEndpoint = new Vector3(0f,0f,0f);
+				for (int ii = 0; ii < parts; ii++) {
+					if (ii == lineTreshold+sn) {
+						lineTreshold += sn;
+						if (lineTreshold == seqTreshold) {
+							sn++;
+							seqTreshold += 6 * sn;
+							currentAngle = Math.PI / 6.0;
+							lineStartpoint = new Vector3(0f, sn);
+						}
+						else {
+							lineStartpoint = lineEndpoint;
+							currentAngle -= angleDifference;
+						}
+						lineEndpoint = new Vector3(sn*(float)Math.Cos(currentAngle), sn*(float)Math.Sin(currentAngle));
+					}
+					AbilityCircle c = Instantiate(abilityCirclePrefab,(new Vector3(cpos.x,cpos.y))+Vector3.Lerp(lineStartpoint,lineEndpoint,(ii-lineTreshold)/sn), Quaternion.identity);
+					circles.Add(c);
+					c.Assign(selectedUnit, selectedUnit.abilities[ii]);
+				}
+			}
+		}
+		else {
+			double angleDifference = (2.0 * Math.PI) / parts;
+			float radius = parts>6 ? 0.5f/(float)Math.Sin(Math.PI/parts) : 1.0f;
+			for (int ii = 0; ii < parts; ii++) {
+				AbilityCircle c = Instantiate(abilityCirclePrefab, new Vector3(radius*(float)Math.Cos(currentAngle) + cpos.x, radius*(float)Math.Sin(currentAngle) + cpos.y), Quaternion.identity);
+				circles.Add(c);
+				c.Assign(selectedUnit, selectedUnit.abilities[ii]);
+				currentAngle -= angleDifference;
+			}
+		}
 	}
 
 	void CancelState() {
@@ -137,6 +203,10 @@ public class FightController : MonoBehaviour {
 		selectedUnit.selectedAbility = null;
 		selectedUnit = null;
 		target = new Vector2();
+		foreach(AbilityCircle c in circles) {
+			Destroy(c);
+		}
+		circles.Clear();
 	}
 
 	//registries handling
@@ -160,7 +230,7 @@ public class FightController : MonoBehaviour {
 		string mf = mapFile.ToString();
 		string[] rows = mf.Split(ROW_SEPARATOR, System.StringSplitOptions.RemoveEmptyEntries);
 
-		map = new Tile[rows[0].Split(TILE_SEPARATOR, System.StringSplitOptions.None).Length,rows.Length];
+		map = new Tile[rows[0].Split(TILE_SEPARATOR, System.StringSplitOptions.None).Length, rows.Length];
 		for (int ii = 0; ii < rows.Length; ii++) {
 			string[] tiles = rows[ii].Split(TILE_SEPARATOR, System.StringSplitOptions.None);
 			for (int jj = 0; jj < tiles.Length; jj++) {

@@ -5,11 +5,11 @@ using UnityEngine;
 public class Unit : MonoBehaviour,IDamagable {
 	List<Resource> resources;
 	List<Item> items;
-	internal List<Ability> abilities;
+	public List<Ability> abilities;
 	FightController controller;
 	internal Vector2 coordinates;
 	int hitpoints;
-	internal bool ally;
+	public bool ally;
 	internal int actionPoints;
 	internal Ability selectedAbility;
 	

@@ -302,10 +302,8 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Fight\Ability.cs" />
     <Compile Include="Assets\Scripts\Fight\AbilityCircle.cs" />
-    <Compile Include="Assets\Scripts\Fight\Ally.cs" />
     <Compile Include="Assets\Scripts\Fight\Barrier.cs" />
     <Compile Include="Assets\Scripts\Fight\BattleObject.cs" />
-    <Compile Include="Assets\Scripts\Fight\Enemy.cs" />
     <Compile Include="Assets\Scripts\Fight\FightController.cs" />
     <Compile Include="Assets\Scripts\Fight\GatheringOption.cs" />
     <Compile Include="Assets\Scripts\Fight\IDamagable.cs" />
@@ -327,6 +325,8 @@
     <Compile Include="Assets\Scripts\Map\Player.cs" />
     <Compile Include="Assets\Scripts\Map\PlayerStartPoint.cs" />
     <Compile Include="Assets\Scripts\Map\Quest.cs" />
+    <Compile Include="Assets\Scripts\Map\QuestInWork\QuestManager.cs" />
+    <Compile Include="Assets\Scripts\Map\QuestInWork\QuestObject.cs" />
     <Compile Include="Assets\Scripts\Map\QuestyLista.cs" />
   </ItemGroup>
   <ItemGroup>

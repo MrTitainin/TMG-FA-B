@@ -9,7 +9,9 @@ public class GameController : MonoBehaviour {
     private static GameController m_Instance;
 
 	//registries
+	[HideInInspector]
 	public List<Entrance> doors;
+	[HideInInspector]
 	public List<DialogActivator> dialogEntities;
 	public DialogController currentDialog;
 	public List<bool> questList;
