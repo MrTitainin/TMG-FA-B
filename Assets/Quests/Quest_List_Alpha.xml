@@ -1,0 +1,10 @@
+<quest_list>
+  <quest>
+    id=Quest_test
+    active=0
+  </quest>
+  <quest>
+    id=Quest_test2
+    active=0
+  </quest>
+</quest_list>
