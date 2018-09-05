@@ -88,12 +88,7 @@
     <Compile Include="Assets\Scripts\Map\QuestInWork\QuestObject.cs" />
     <Compile Include="Assets\Scripts\Map\QuestyLista.cs" />
     <None Include="Assets\Quests\Quest_List_Alpha.xml" />
-    <None Include="Assets\Dialogs\sample_dialog.xml">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Assets\Quests\sample_quest.xml">
-      <SubType>Designer</SubType>
-    </None>
+    <None Include="Assets\Dialogs\sample_dialog.xml" />
     <None Include="Assets\Dialogs\simple_dialog.xml" />
     <None Include="Assets\Encounters\test_encounter_map.txt" />
     <Reference Include="UnityEditor.StandardEvents">
