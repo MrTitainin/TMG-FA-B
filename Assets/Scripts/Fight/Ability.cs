@@ -15,6 +15,7 @@ public class Ability : MonoBehaviour {
 	public AbilityType action;
 	//common
 	public double range;
+	public Texture2D icon;
 	//attack
 	public int damage;
 
