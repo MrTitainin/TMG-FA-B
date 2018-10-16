@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Level/MainMap.unity
+- path: Assets/Level/Dump/Quests xml test 1.unity
   isLoaded: 1
   isActive: 1

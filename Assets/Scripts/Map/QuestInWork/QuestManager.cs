@@ -1,13 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Xml;
 using UnityEngine;
+using UnityEngine.UI;//tylko do testow
 
 public class QuestManager : MonoBehaviour {
     public QuestObject[] quests;
    // public bool[] questsCompleted;
     private static bool QuestManagerExists;
-	// Use this for initialization
-	void Start ()
+    public Text QText;
+    // Use this for initialization
+    void Start ()
     {
         
         if (!QuestManagerExists)
@@ -19,6 +22,7 @@ public class QuestManager : MonoBehaviour {
         {
             Destroy(gameObject);
         }
+        LoadQuest();
        // questsCompleted = new bool[quests.Length];
     }
 
@@ -27,8 +31,24 @@ public class QuestManager : MonoBehaviour {
 		
 	}
 
-    public void showQuest()
+    public void LoadQuest()
     {
-
+        XmlTextReader xmlReader = new XmlTextReader("sample_quest.xml");
+        while (xmlReader.Read())
+        {
+            switch (xmlReader.NodeType)
+            {
+                case XmlNodeType.Element:
+                   // listBox1.Items.Add("<" + xmlReader.Name + ">");
+                    break;
+                case XmlNodeType.Text:
+                    // listBox1.Items.Add(xmlReader.Value);
+                    QText.text = xmlReader.Value;
+                    break;
+                case XmlNodeType.EndElement:
+                    //listBox1.Items.Add("");
+                    break;
+            }
+        }
     }
 }
