@@ -89,6 +89,7 @@
     <Compile Include="Assets\Scripts\Map\QuestyLista.cs" />
     <None Include="Assets\Quests\Quest_List_Alpha.xml" />
     <None Include="Assets\Dialogs\sample_dialog.xml" />
+    <None Include="Assets\Scripts\AbilityCircleCombiner.shader" />
     <None Include="Assets\Dialogs\simple_dialog.xml" />
     <None Include="Assets\Encounters\test_encounter_map.txt" />
     <Reference Include="UnityEditor.StandardEvents">
